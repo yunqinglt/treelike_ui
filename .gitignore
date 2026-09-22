@@ -1,0 +1,7 @@
+/out/
+/build/
+/.vs/
+/.vscode/
+/.iis/
+CMakeUserPresets.json
+compile_commands.json
