@@ -1,0 +1,3 @@
+[submodule "sdl_player"]
+	path = sdl_player
+	url = git@github.com:yunqinglt/sdl_player.git

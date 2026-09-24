@@ -1,0 +1,161 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "dev-base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "BUILD_TESTING": "ON",
+        "TREELIKE_UI_BUILD_TESTS": "ON",
+        "TREELIKE_UI_BUILD_SDL_PLAYER": "ON",
+        "SDL_PLAYER_FETCH_SDL2": "ON"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug with SDL preview",
+      "inherits": "dev-base",
+      "generator": "Ninja",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-debug-rgb888",
+      "displayName": "Linux Debug RGB888 with SDL preview",
+      "inherits": "linux-debug",
+      "cacheVariables": {
+        "TREELIKE_UI_PIXEL_FORMAT": "RGB888"
+      }
+    },
+    {
+      "name": "windows-vs2022",
+      "displayName": "Windows Visual Studio 2022 with SDL preview",
+      "inherits": "dev-base",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "windows-vs2022-rgb888",
+      "displayName": "Windows Visual Studio 2022 RGB888 with SDL preview",
+      "inherits": "windows-vs2022",
+      "cacheVariables": {
+        "TREELIKE_UI_PIXEL_FORMAT": "RGB888"
+      }
+    },
+    {
+      "name": "windows-vs2026",
+      "displayName": "Windows Visual Studio 2026 with SDL preview",
+      "inherits": "dev-base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "windows-vs2026-rgb888",
+      "displayName": "Windows Visual Studio 2026 RGB888 with SDL preview",
+      "inherits": "windows-vs2026",
+      "cacheVariables": {
+        "TREELIKE_UI_PIXEL_FORMAT": "RGB888"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug"
+    },
+    {
+      "name": "linux-debug-rgb888",
+      "configurePreset": "linux-debug-rgb888"
+    },
+    {
+      "name": "windows-vs2022",
+      "configurePreset": "windows-vs2022",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-vs2022-rgb888",
+      "configurePreset": "windows-vs2022-rgb888",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-vs2026",
+      "configurePreset": "windows-vs2026",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-vs2026-rgb888",
+      "configurePreset": "windows-vs2026-rgb888",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "linux-debug-rgb888",
+      "configurePreset": "linux-debug-rgb888",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vs2022",
+      "configurePreset": "windows-vs2022",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vs2022-rgb888",
+      "configurePreset": "windows-vs2022-rgb888",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vs2026",
+      "configurePreset": "windows-vs2026",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vs2026-rgb888",
+      "configurePreset": "windows-vs2026-rgb888",
+      "configuration": "Debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

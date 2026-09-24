@@ -1,7 +1,13 @@
 /out/
+/out-truetype-*/
 /build/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
 /.vs/
 /.vscode/
 /.iis/
+/fantasque sans mono/
 CMakeUserPresets.json
 compile_commands.json
